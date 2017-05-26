@@ -88,8 +88,8 @@ public class Main2 {
 			for(int i = 0; i <  array.length; i++) {array[i] =  (int)(Math.random() * 90 + 10);
 		System.out.print(array[i]+" ");}
 			if (array[0]<array[1] && array[1]<array[2] && array[2]<array[3]){
-                System.out.println("== масив є зростаючим !!!...");}
-			else System.out.println("== масив не зростаючий");}
+                System.out.println("== Masuv e ZROSTAJY4uM !!!...");}
+			else System.out.println("== masuv ne zrostajy4ui");}
 	//Masuv 4 vupadkovuh masuva + 10, 99 - Zada4a #6         									
 		System.out.println(" ");
 	//Masuv 20 perwuh 4leniv Fibonachi - Zada4a #7
