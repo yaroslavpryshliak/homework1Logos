@@ -1,24 +1,28 @@
 package car01;
 
-public class Body {
-	private String color;
+import car01.enumPackage.Color;
 
-	public Body(String color) {
+public class Body {
+
+	private Color color;
+
+	public Body(Color color) {
 		this.color = color;
 	}
 
-	public String getColor() {
+	public Color getColor() {
 		return color;
 	}
 
-	public void setColor(String color) {
+	public void setColor(Color color) {
 		this.color = color;
 	}
 
 	@Override
 	public String toString() {
-		return " Body color= " + color;
+		return "Body color=" + color;
 	}
+	
 	
 	
 }

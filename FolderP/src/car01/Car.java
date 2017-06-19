@@ -1,54 +1,51 @@
 package car01;
 
+import java.util.Scanner;
+import car01.enumPackage.Color;
+import car01.enumPackage.Covering;
+import car01.enumPackage.Diametr;
+import car01.enumPackage.Model;
+
 public class Car {
 	
-	private Type type;
 	private final Steering steering;
 	private final Wheel wheel;
 	private final Body body;
-	private String carmodel;
+	private Model model;
 	
+	Scanner sc = new Scanner(System.in);
 
-	public Car(String carmodel, Type type, Steering steering, Wheel wheel, Body body ) {
-		this.carmodel = carmodel;
+	public Car(Steering steering, Wheel wheel, Body body, Model model) {
 		this.steering = steering;
 		this.wheel = wheel;
 		this.body = body;
-		this.type = type;
-		
+		this.model = model;
 	}
 
-	public void setCover(String cover) {
-		if(cover!=null)steering.setCover(cover);
+	public void setCovering(Covering covering) {
+		if(covering!=null)steering.setCovering(covering);
 	}
 
-	public void setDiametr(int diametr) {
-		if(diametr!=0)wheel.setDiametr(diametr);
+	public void setDiametr(Diametr diametr) {
+		if(diametr!=null)wheel.setDiametr(diametr);
 	}
 
-	public void setColor(String color) {
+	public void setColor(Color color) {
 		if(body!=null)body.setColor(color);
-	}
-	
-	public Type getType() {
-		return type;
-	}
-
-	public void setType(Type type) {
-		this.type = type;
 	}
 
 	@Override
 	public String toString() {
-		return "Car [steering=" + steering + ", wheel=" + wheel + ", body=" + body + ", carmodel=" + carmodel
-				+ ", type= " + type + "]";
+		return "CAR" + " " +  model + "  " + steering + "  " +  wheel + "  " +  body + " " ;
 	}
+	
+	
+	
+	
 
-	public void setParameters(String cover, int diametr, String color){
-		setCover(cover);
-		setDiametr(diametr);
-		setColor(color);
-	}
+	
+	
+	
 	
 	
 

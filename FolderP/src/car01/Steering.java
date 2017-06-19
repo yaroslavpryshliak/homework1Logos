@@ -1,25 +1,28 @@
 package car01;
-
+import car01.enumPackage.Covering;
 public class Steering {
 	
-	private String cover;
+	private Covering covering;
 
-	public Steering(String cover) {
-		this.cover = cover;
+	public Steering(Covering covering) {
+		this.covering = covering;
 	}
 
-	public String getCover() {
-		return cover;
+	public Covering getCovering() {
+		return covering;
 	}
 
-	public void setCover(String cover) {
-		this.cover = cover;
+	public void setCovering(Covering covering) {
+		this.covering = covering;
 	}
 
 	@Override
 	public String toString() {
-		return " Steering " + cover;
+		return "Steering covering " + covering;
 	}
+	
+	
+	
 
 	
 	

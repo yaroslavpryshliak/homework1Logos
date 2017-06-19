@@ -1,25 +1,26 @@
 package car01;
-
+import car01.enumPackage.Diametr;
 public class Wheel {
-	
-	private int diametr;
+	private Diametr diametr;
 
-	public Wheel(int diametr) {
+	public Wheel(Diametr diametr) {
 		this.diametr = diametr;
 	}
 
-	public int getDiametr() {
+	public Diametr getDiametr() {
 		return diametr;
 	}
 
-	public void setDiametr(int diametr) {
+	public void setDiametr(Diametr diametr) {
 		this.diametr = diametr;
 	}
 
 	@Override
 	public String toString() {
-		return " Wheel diametr= " + diametr;
+		return "Wheel diametr= " + diametr;
 	}
+	
+	
 	
 	
 }
