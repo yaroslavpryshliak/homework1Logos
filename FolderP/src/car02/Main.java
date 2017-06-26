@@ -24,8 +24,7 @@ public class Main {
 	public static void main(String[] args) {
 		Main main = new Main();
 		main.begin();
-		main.syso1();
-
+		
 	}
 	public void begin(){
 		setCar();
@@ -34,9 +33,9 @@ public class Main {
 		System.out.println(" ");
 		System.out.println("1. Search cars, with enter type  ENTER 1");
 		System.out.println("2. Delete from list all cars, have entered colorType  ENTER 2");
-		System.out.println("3.  ENTER 3");
-		System.out.println("4.  ENTER 4");
-		System.out.println("5.  ENTER 5");
+		System.out.println("3. Change tire by diametr to winter  ENTER 3");
+		System.out.println("4. Delet car (typeBody, helDiameter) ENTER 4");
+		System.out.println("5. Remember index of Cars  ENTER 5");
 		while (isRun){
 		switch (scanner.next()) {
 		case "1":
@@ -46,13 +45,13 @@ public class Main {
 			removeColor();
 			break;
 		case "3":
-
+			changeTypeTireByDiametrWheel();
 			break;
 		case "4":
-
+			deleteCars();
 			break;
 		case "5":
-
+			searchBodyType();
 			break;
 		case "stop":
 			isRun = false;
@@ -68,7 +67,10 @@ public class Main {
 	private Random random = new Random();
 	
 	TypeBody  typeBody;
+	TypeTire typeTire;
 	Color color;
+	Diametr diametr;
+	HelmDiameter helmDiameter;
 
 	private Car createCar(){
 		Model[] models = Model.values();
@@ -184,5 +186,140 @@ public class Main {
 	private void syso1(){
 		System.out.println(cars.toString());
 	}
+	
+	private TypeTire tireEnter() {
+		
+		System.out.println("Choose type tire:");
+		System.out.println("ALLSEASON, enter: allseason");
+		System.out.println("SUMMER, enter: summer");
+		System.out.println("WINTER, enter: winter");
+		
+		switch (scanner.next().toLowerCase()) {
+		case "allseason":
+			typeTire = TypeTire.ALLSEASON;
+			break;
+		case "summer":
+			typeTire = TypeTire.SUMMER;
+			break;
+		case "winter":
+			typeTire = TypeTire.WINTER;
+			break;
+		default:
+			System.err.println("Wrong TYPETIRE");
+		}
+		return typeTire;
+	}
+	
+	private Diametr enterDiametr(){
+		System.out.println("  ");
+		System.out.println("Choose diametr R*:");
+		System.out.println("R12 enter: 12");
+		System.out.println("R13 enter: 13");
+		System.out.println("R14 enter: 14");
+		System.out.println("R15 enter: 15");
+		System.out.println("R16 enter: 16");
+		System.out.println("R17 enter: 17");
+		System.out.println("R18 enter: 18");
+		try{
+		switch (scanner.nextInt()) {
+		case 12:
+			diametr = Diametr.R12;
+			break;
+		case 13:
+			diametr = Diametr.R13;
+			break;
+		case 14:
+			diametr = Diametr.R14;
+			break;
+		case 15:
+			diametr = Diametr.R15;
+			break;
+		case 16:
+			diametr = Diametr.R16;
+			break;
+		case 17:
+			diametr = Diametr.R17;
+			break;
+		case 18:
+			diametr = Diametr.R18;
+			break;
+		
+		default:
+			System.out.println("Enter from 12 to 18");
+		
+		}
+		}catch (Exception e) {
+			System.err.println("Values not from R13-R20");
+		}
+		return diametr;
+	}
+	
+	private void changeTypeTireByDiametrWheel(){
+		Boolean changeType = false;
+		diametr = enterDiametr();
+		System.out.println(" ");
+		for (Car car : cars) {
+			if (car.getWheel().getDiametr().equals(diametr)) {
+				car.getWheel().setTypeTire(typeTire.WINTER);
+				changeType = true;	
+			}
+		}System.out.print(cars);
+	}
+	
+	public HelmDiameter diameterHelmEnter() {
+		System.out.println("Виберіть діаметр керма:");
+		System.out.println("D12 enter: 12");
+		System.out.println("D13 enter: 13");
+		System.out.println("D14 enter: 14");
 
+
+		switch (scanner.next()) {
+		case "12":
+			helmDiameter = HelmDiameter.D12;
+			break;
+		case "13":
+			helmDiameter = HelmDiameter.D13;
+			break;
+		case "14":
+			helmDiameter = HelmDiameter.D14;
+			break;
+		default:
+			System.out.println("Enter helmdiameter from 12-14!");
+		}
+
+		return helmDiameter;
+	}
+	
+	private void deleteCars() {
+		Boolean delcar = false;
+		typeBody = bodyEnter();
+		helmDiameter = diameterHelmEnter();
+		Iterator<Car> iter = cars.iterator();
+		while(iter.hasNext()){
+		Car tmp = iter.next();
+			if (tmp.getBody().getTypeBody().equals(typeBody)&&tmp.getHelm().getHelmDiameter().equals(helmDiameter)) {
+				delcar = true;
+				iter.remove();
+		}System.out.print(cars);
+	}
+	}
+
+	public void searchBodyType() {
+		Boolean hasCar = true;
+		typeBody = bodyEnter();
+		List<Integer> carAds = new ArrayList<>();
+		Iterator<Car> iterator = cars.iterator();
+		while (iterator.hasNext()) {
+			Car tmp = iterator.next();
+			if (tmp.getBody().getTypeBody().equals(typeBody)) {
+				carAds.add(cars.indexOf(tmp));
+				hasCar = true;
+				System.out.println("Car add to list");
+			}
+		}
+		System.out.println(carAds);
+		if (hasCar != true) {
+			System.out.println("No car whis choose type");
+		}
+	}
 }

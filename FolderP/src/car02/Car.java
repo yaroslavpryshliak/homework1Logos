@@ -47,7 +47,7 @@ public class Car {
 	}
 	@Override
 	public String toString() {
-		return "Car [body=" + body + ", helm=" + helm + ", wheel=" + wheel + ", model=" + model + "]";
+		return "Car [" + body + ", " + helm + ", " + wheel + ", " + model + "]";
 	}
 
 	
